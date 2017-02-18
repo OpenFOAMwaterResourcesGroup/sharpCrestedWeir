@@ -1,0 +1,193 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+
+    {
+        name    planX1;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (1.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX2;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (2.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX3;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (3.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX4;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (4.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX4p75;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (4.75 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX5p25;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (5.25 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX6;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (6.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX7;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (7.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX8;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (8.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+    {
+        name    planX9;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo
+        {
+            surface searchablePlane;
+            planeType pointAndNormal;
+            pointAndNormalDict
+            {
+               basePoint (9.0 0.0 0.0);
+               normalVector (1 0 0);
+            }
+        }
+    }
+ 
+);
+
+// ************************************************************************* //

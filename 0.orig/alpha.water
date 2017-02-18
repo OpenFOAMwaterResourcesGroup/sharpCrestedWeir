@@ -1,0 +1,67 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      alpha1;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+
+	amont_bas
+	{ 
+    		//type  		inletOutlet; //lets only water return into domain, but lets air out if necessary (zeroGradient)
+    		//inletValue uniform 1;
+                type fixedValue; 
+    		value uniform 1;
+	}
+
+	amont_haut
+	{ 
+    		type 		inletOutlet; //lets only air back into the domain
+    		inletValue 	uniform 0;
+    		value 		uniform 0;
+	}
+
+	aval_bas
+	{ 
+    		type 		inletOutlet; //let only water back into domain
+    		inletValue 	uniform 1;
+    		value 		uniform 1;
+	}
+
+  
+	aval_haut
+	{
+     		type 		inletOutlet; //let only air back in
+    		inletValue 	uniform 0;
+    		value 		uniform 0;
+	}
+
+  	haut
+  	{
+        	type            inletOutlet; //let only air back in
+        	inletValue      uniform 0;
+        	value           uniform 0;
+  	}
+  
+  	"wall_.*"
+  	{
+        	type            zeroGradient;
+  	}
+}
+// ************************************************************************* //

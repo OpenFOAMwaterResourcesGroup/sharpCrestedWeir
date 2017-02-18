@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+// generation du maillage
+//---------------------------------------------------------------
+
+foamClearPolyMesh
+rm -rf 0
+blockMesh
+
+// snappyHexMeshDict avec castellatedMesh true et snap false
+snappyHexMesh -overwrite -dict system/snappyHexMeshDict.cast
+
+topoSet -dict system/topoSetDict.boxToCell
+refineMesh -overwrite
+
+topoSet -dict system/topoSetDict.boxToCell2
+refineMesh -overwrite
+
+rm -rf 0
+rm constant/polyMesh/cellLevel
+rm constant/polyMesh/pointLevel
+
+// snappyHexMeshDict avec castellatedMesh false et snap true
+snappyHexMesh -overwrite -dict system/snappyHexMeshDict.snap
+
+//---------------------------------------------------------------
+// definition des patchs amont et aval
+//---------------------------------------------------------------
+
+setSet -batch system/setSet.faces_amont_aval
+createPatch -overwrite -dict system/createPatchDict.amont_aval
+
+//---------------------------------------------------------------
+// definition des faceZones pour le monitoring du flux de rhoPhi
+//---------------------------------------------------------------
+
+topoSet -dict system/topoSetDict.surface
+topoSet -dict system/topoSetDict.surfaceStl
+

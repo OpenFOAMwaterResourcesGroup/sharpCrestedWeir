@@ -1,0 +1,254 @@
+solid zone0
+ facet normal 0 -1 0
+  outer loop
+   vertex 5.002 3 1
+   vertex 5.002 3 2
+   vertex 5 3 1
+  endloop
+ endfacet
+ facet normal -0 -1 0
+  outer loop
+   vertex 5.002 3 2
+   vertex 5 3 2
+   vertex 5 3 1
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 5.05 5 2
+   vertex 5 5 2
+   vertex 5.05 3.06032 2
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 5 3 2
+   vertex 5.002 3 2
+   vertex 5 5 2
+  endloop
+ endfacet
+ facet normal 0 -0 1
+  outer loop
+   vertex 5.002 3 2
+   vertex 5.05 3.06032 2
+   vertex 5 5 2
+  endloop
+ endfacet
+ facet normal 0.782486 -0.622668 0
+  outer loop
+   vertex 5.05 3.06032 0.939676
+   vertex 5.05 3.06032 2
+   vertex 5.002 3 1
+  endloop
+ endfacet
+ facet normal 0.782486 -0.622668 0
+  outer loop
+   vertex 5.05 3.06032 2
+   vertex 5.002 3 2
+   vertex 5.002 3 1
+  endloop
+ endfacet
+ facet normal 1 -0 0
+  outer loop
+   vertex 5.05 1.93968 0.939676
+   vertex 5.05 0 1e-09
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 5.05 1.93968 2
+   vertex 5.05 0 2
+   vertex 5.05 1.93968 0.939676
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 5.05 0 2
+   vertex 5.05 0 1e-09
+   vertex 5.05 1.93968 0.939676
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 5.05 0 1e-09
+   vertex 5.05 5 1e-09
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal 1 0 -0
+  outer loop
+   vertex 5.05 5 1e-09
+   vertex 5.05 5 2
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 5.05 5 2
+   vertex 5.05 3.06032 2
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal 0.782506 0 0.622643
+  outer loop
+   vertex 5.002 3 1
+   vertex 5.002 2 1
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal 0.782506 0 0.622643
+  outer loop
+   vertex 5.002 2 1
+   vertex 5.05 1.93968 0.939676
+   vertex 5.05 3.06032 0.939676
+  endloop
+ endfacet
+ facet normal -0 0 1
+  outer loop
+   vertex 5 3 1
+   vertex 5 2 1
+   vertex 5.002 3 1
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 5 2 1
+   vertex 5.002 2 1
+   vertex 5.002 3 1
+  endloop
+ endfacet
+ facet normal 0 1 -0
+  outer loop
+   vertex 5.05 5 1e-09
+   vertex 5 5 1e-09
+   vertex 5.05 5 2
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 5 5 1e-09
+   vertex 5 5 2
+   vertex 5.05 5 2
+  endloop
+ endfacet
+ facet normal 0.782486 0.622669 -0
+  outer loop
+   vertex 5.05 1.93968 0.939676
+   vertex 5.002 2 1
+   vertex 5.05 1.93968 2
+  endloop
+ endfacet
+ facet normal 0.782486 0.622669 -0
+  outer loop
+   vertex 5.002 2 1
+   vertex 5.002 2 2
+   vertex 5.05 1.93968 2
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 5 2 1
+   vertex 5 2 2
+   vertex 5.002 2 1
+  endloop
+ endfacet
+ facet normal -0 1 0
+  outer loop
+   vertex 5 2 2
+   vertex 5.002 2 2
+   vertex 5.002 2 1
+  endloop
+ endfacet
+ facet normal -1 0 -0
+  outer loop
+   vertex 5 5 2
+   vertex 5 5 1e-09
+   vertex 5 3 1
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 5 5 2
+   vertex 5 3 1
+   vertex 5 3 2
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 5 0 2
+   vertex 5 2 1
+   vertex 5 0 1e-09
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 5 0 2
+   vertex 5 2 2
+   vertex 5 2 1
+  endloop
+ endfacet
+ facet normal -1 0 -0
+  outer loop
+   vertex 5 2 1
+   vertex 5 3 1
+   vertex 5 0 1e-09
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 5 0 1e-09
+   vertex 5 3 1
+   vertex 5 5 1e-09
+  endloop
+ endfacet
+ facet normal 0 -0 1
+  outer loop
+   vertex 5.05 0 2
+   vertex 5.05 1.93968 2
+   vertex 5 0 2
+  endloop
+ endfacet
+ facet normal -0 0 1
+  outer loop
+   vertex 5 2 2
+   vertex 5 0 2
+   vertex 5.002 2 2
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 5.002 2 2
+   vertex 5 0 2
+   vertex 5.05 1.93968 2
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex 5.05 0 1e-09
+   vertex 5.05 0 2
+   vertex 5 0 1e-09
+  endloop
+ endfacet
+ facet normal -0 -1 0
+  outer loop
+   vertex 5.05 0 2
+   vertex 5 0 2
+   vertex 5 0 1e-09
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex 5.05 0 1e-09
+   vertex 5 0 1e-09
+   vertex 5.05 5 1e-09
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex 5 0 1e-09
+   vertex 5 5 1e-09
+   vertex 5.05 5 1e-09
+  endloop
+ endfacet
+endsolid zone0

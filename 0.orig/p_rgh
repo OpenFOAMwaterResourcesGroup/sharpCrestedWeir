@@ -1,0 +1,83 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+
+	amont_bas
+	{ 
+        	type            totalPressure;
+//        	p0              uniform 10791; //1.1 m upstream
+        	p0              uniform 12753; //1.3 m upstream
+//        	p0              uniform 14715; //1.5 m upstream
+        	U               U;
+        	phi             phi;
+        	rho             rho;
+        	psi             none;
+        	gamma           1;
+        	value           uniform 0;
+	}
+
+	amont_haut
+	{ 
+    		type 		outletInlet; //zeroGradient if vector points into domain, 0 if pointing out of domain
+    		outletValue 	uniform 0;
+    		value 		uniform 0;
+	}
+
+	aval_bas
+	{ 
+        	type            totalPressure;
+//        	p0              uniform 8829; //0.9 m downstream
+//        	p0              uniform 5886; //0.6 m downstream
+        	p0              uniform 4905; //0.5 m downstream
+        	U               U;
+        	phi             phi;
+        	rho             rho;
+        	psi             none;
+        	gamma           1;
+        	value           uniform 0;
+	}
+
+  
+	aval_haut
+	{
+    		type 		inletOutlet; //zeroGradient if vector points out of domain, 0 if pointing in
+    		inletValue 	uniform 0;
+    		value 		uniform 0;
+	}
+
+  	haut
+  	{
+    		type 		inletOutlet; //zeroGradient if vector points out of domain, 0 if pointing in
+    		inletValue 	uniform 0;
+    		value 		uniform 0;        	
+
+  	}
+  
+  	"wall_.*"
+  	{
+        	type            fixedFluxPressure;
+        	value           uniform 0;
+  	}
+}
+
+// ************************************************************************* //

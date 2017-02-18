@@ -1,0 +1,43 @@
+About the case:
+
+This case was developed over a number of years by various researchers, interns and practicing CFD engineers. The sharp crested weir is a well studied hydraulic control structure that lends itself well to model validation. interFoam models both the air and fluid fraction and therefore the imposition of realistic boundary conditions has been somewhat of a difficult task in the past. The following method uses a totalPressure boundary condition for p_rgh and is showing good results so far. The method allows the user to specify a fixed upstream and downstream water surface level which is often encountered in open channel hydraulic applications. This case has been tested to work correctly with OpenFOAM version 3.0.1. It should work on previous versions with a few minor adjustements.
+
+Quick start - perform the following steps on the downloaded case file to get the simulation running:
+
+cp -r 0.orig 0
+setFields
+decomposePar (modify decomposeParDict in the system directory to have the righ number of processors as your machine)
+mpirun -np XX interFoam -parallel (XX is the number of processors on your machine as set in decomposeParDict)
+
+The preliminary steps of the case have already been performed onthe downloaded file. The steps consist of first building the mesh then imposing the initial conditions. The steps on a single processor are:
+
+*** if you want to try these steps yourself first copy 0.orig to 0 (cp -r 0.orig 0) then proceed with the following
+
+Mesh generation steps:
+
+1. blockMesh
+2. snappyHexMesh -overwrite -dict system/snappyHexMeshDict.cast 
+3. topoSet -dict system/topoSetDict.boxToCell
+4. refineMesh -overwrite
+5. topoSet -dict system/topoSetDict.boxToCell2
+6. refineMesh -overwrite
+7. rm -rf 0
+8. rm constant/polyMesh/cellLevel
+9. rm constant/polyMesh/pointLevel
+10. snappyHexMesh -overwrite -dict system/snappyHexMeshDict.snap
+11. setSet -batch system/setSet.faces_amont_aval
+12. createPatch -overwrite -dict system/createPatchDict.amont_aval
+13. topoSet -dict system/topoSetDict.surface
+14. topoSet -dict system/topoSetDict.surfaceStl
+
+Initial conditions:
+
+15. rm -r 0
+16. cp -r 0.orig 0
+17. setFields
+
+Running the case:
+
+18. decomposePar (set number of processors for your machine in decomposeParDict)
+19. mpirun -np XX interFoam -parallel (replace XX with number of processors)
+20. wait, get some popcorn and watch in paraFoam

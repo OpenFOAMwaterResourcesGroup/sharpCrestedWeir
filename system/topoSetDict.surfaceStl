@@ -1,0 +1,103 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+
+    {
+        name    planStlX1;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x1.stl; }
+    }
+  
+    {
+        name    planStlX2;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x2.stl; }
+    }
+  
+    {
+        name    planStlX3;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x3.stl; }
+    }
+  
+    {
+        name    planStlX4;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x4.stl; }
+    }
+  
+    {
+        name    planStlX6;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x6.stl; }
+    }
+  
+    {
+        name    planStlX7;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x7.stl; }
+    }
+  
+    {
+        name    planStlX8;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x8.stl; }
+    }
+  
+    {
+        name    planStlX9;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x9.stl; }
+    }
+  
+    {
+        name    planStlX4p75;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x4p75.stl; }
+    }
+  
+    {
+        name    planStlX5p25;
+        type    faceZoneSet;
+        action  new;
+        source  searchableSurfaceToFaceZone;
+        sourceInfo { surface triSurfaceMesh;  name planStl_x5p25.stl; }
+    }
+  
+);
+
+// ************************************************************************* //

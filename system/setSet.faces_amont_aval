@@ -1,0 +1,23 @@
+#zMin      0.0
+#zMidAmont 0.9
+#zMidAval  0.4
+#zMax      100.0
+
+//amont_bas
+faceSet f0 new
+faceSet f0 add boxToFace ( -0.05 0.0 0.0 )( 0.05 5.0 0.9 )
+
+//amont_haut
+faceSet f1 new
+faceSet f1 add boxToFace ( -0.05 0.0 0.9 )( 0.05 5.0 100.0 )
+
+//aval_bas
+faceSet f2 new
+faceSet f2 add boxToFace ( 10.95 0.0 0.0 )( 11.05 5.0 0.4 )
+
+//aval_haut
+faceSet f3 new
+faceSet f3 add boxToFace ( 10.95 0.0 0.4 )( 11.05 5.0 100.0 )
+
+
+

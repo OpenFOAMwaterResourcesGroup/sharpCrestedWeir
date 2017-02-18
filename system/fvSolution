@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    pcorr
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-10;
+        relTol          0;
+        minIter         1;
+    }
+
+ "alpha.water.*"
+     {
+     
+         solver      PBiCG;
+	 preconditioner DILU; 	
+	 
+	 
+	 nAlphaCorr      1;
+	 nAlphaSubCycles 1;
+	 cAlpha          1;
+	 icAlpha      0.25;
+	 
+	 MULESCorr     yes;
+	 nLimiterIter    8;
+	 alphaApplyPrevCorr true;
+
+        minIter         1;
+     }
+
+    p_rgh
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-07;
+        relTol          0.05;
+        minIter         1;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        tolerance       1e-07;
+        relTol          0;
+        minIter         1;
+    }
+
+    "(U|k|epsilon)"
+    {
+        solver          PBiCG; 			       
+        preconditioner  DILU; 
+        tolerance       1e-06;
+        relTol          0;
+    }
+
+    "(U|k|epsilon)Final"
+    {
+        solver          PBiCG; 
+        preconditioner  DILU; 
+        tolerance       1e-08;
+        relTol          0;
+        minIter         1;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor        yes; //no;
+    nCorrectors              5;   //3;
+    nNonOrthogonalCorrectors 0;
+}
+
+
+    
+
+
+// ************************************************************************* //

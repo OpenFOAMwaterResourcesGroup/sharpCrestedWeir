@@ -1,0 +1,214 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//1. Make sure the distances between coordinate variables (i.e. zMin, yA, etc.) are divisible by the cell size
+//2. It is important to build the blocks and model (i.e. geometry imports) around the desired upstream and downstream water surface levels
+//   otherwise, you might have to choose too fine of cellsize which may or may not be a problem
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+convertToMeters 1;
+
+xMin   0.0; 
+xDev   5.0; 
+xMax  11.0;
+
+yA  0.0; 
+yB  5.0; 
+
+zMin     0.0;  
+zPlaceHolder  0.5; 
+zNVaval   0.9; 
+zNVamont  1.3;
+zMax     3.0;
+
+cellsize 0.2;
+
+nbDirXAmont  #calc "floor((($xDev)-($xMin))/$cellsize)";
+nbDirXAval   #calc "floor((($xMax)-($xDev))/$cellsize)";
+nbDirY       #calc "floor((($yB)-($yA))/$cellsize)";
+nbDirZBas1   #calc "floor((($zPlaceHolder)-($zMin))/$cellsize)";
+nbDirZBas2   #calc "floor((($zNVaval)-($zPlaceHolder))/$cellsize)";
+nbDirZHaut1  #calc "floor((($zNVamont)-($zNVaval))/$cellsize)";
+nbDirZHaut2  #calc "floor((($zMax)-($zNVamont))/$cellsize)";
+
+//nbDirXAmont 200; //25; //150; 
+//nbDirXAval  240; //30; //180; 
+//nbDirY      1; //25; 
+//nbDirZBas1  20; //3;  //15;
+//nbDirZBas2  16; //3;  //24;
+//nbDirZHaut1 44; //5;  //21;
+//nbDirZHaut2 40; //5;  //30;
+
+vertices
+(
+ ($xMin  $yA   $zMin    ) // 0
+ ($xMin  $yA   $zPlaceHolder ) // 1
+ ($xMin  $yA   $zNVaval  ) // 2
+ ($xMin  $yA   $zNVamont ) // 3
+ ($xMin  $yA   $zMax    ) // 4
+
+ ($xDev  $yA   $zMin    ) // 5
+ ($xDev  $yA   $zPlaceHolder ) // 6
+ ($xDev  $yA   $zNVaval  ) // 7
+ ($xDev  $yA   $zNVamont ) // 8
+ ($xDev  $yA   $zMax    ) // 9
+
+ ($xMax  $yA   $zMin    ) // 10
+ ($xMax  $yA   $zPlaceHolder ) // 11
+ ($xMax  $yA   $zNVaval  ) // 12
+ ($xMax  $yA   $zNVamont ) // 13
+ ($xMax  $yA   $zMax    ) // 14
+
+ ($xMin  $yB   $zMin    ) // 15
+ ($xMin  $yB   $zPlaceHolder ) // 16
+ ($xMin  $yB   $zNVaval  ) // 17
+ ($xMin  $yB   $zNVamont ) // 18
+ ($xMin  $yB   $zMax    ) // 19
+
+ ($xDev  $yB   $zMin    ) // 20
+ ($xDev  $yB   $zPlaceHolder ) // 21
+ ($xDev  $yB   $zNVaval  ) // 22
+ ($xDev  $yB   $zNVamont ) // 23
+ ($xDev  $yB   $zMax    ) // 24
+
+ ($xMax  $yB   $zMin    ) // 25
+ ($xMax  $yB   $zPlaceHolder ) // 26
+ ($xMax  $yB   $zNVaval  ) // 27
+ ($xMax  $yB   $zNVamont ) // 28
+ ($xMax  $yB   $zMax    ) // 29
+
+);
+
+blocks
+(
+ hex (16 21  6  1 15 20  5  0) ($nbDirXAmont $nbDirY $nbDirZBas1)   simpleGrading (1 1 1) //block1 
+ hex (17 22  7  2 16 21  6  1) ($nbDirXAmont $nbDirY $nbDirZBas2)   simpleGrading (1 1 1) //block2
+ hex (18 23  8  3 17 22  7  2) ($nbDirXAmont $nbDirY $nbDirZHaut1)  simpleGrading (1 1 1) //block3
+ hex (19 24  9  4 18 23  8  3) ($nbDirXAmont $nbDirY $nbDirZHaut2)  simpleGrading (1 1 1) //block4
+ hex (21 26 11  6 20 25 10  5) ($nbDirXAval  $nbDirY $nbDirZBas1)   simpleGrading (1 1 1) //block5
+ hex (22 27 12  7 21 26 11  6) ($nbDirXAval  $nbDirY $nbDirZBas2)   simpleGrading (1 1 1) //block6
+ hex (23 28 13  8 22 27 12  7) ($nbDirXAval  $nbDirY $nbDirZHaut1)  simpleGrading (1 1 1) //block7
+ hex (24 29 14  9 23 28 13  8) ($nbDirXAval  $nbDirY $nbDirZHaut2)  simpleGrading (1 1 1) //block8
+
+);
+
+edges
+(
+);
+
+boundary
+(
+    amont_bas
+    {
+        type wall;
+        faces
+        (
+            (1 0 15 16)
+            (2 1 16 17)
+	    (3 2 17 18)
+        );
+    }
+    
+    amont_haut
+    {
+        type wall;
+        faces
+        (
+            (4 3 18 19)
+        );
+    }
+    
+    aval_bas
+    {
+        type patch;
+        faces
+        (
+            (11 10 25 26)
+            (12 11 26 27) 
+        );
+    }
+    
+    aval_haut
+    {
+        type patch;
+        faces
+        (
+	    (14 13 28 29)
+	    (13 12 27 28)
+        );
+    }
+    
+    haut
+    {
+        type patch;
+        faces
+        (
+            ( 9  4 19 24)
+            (14  9 24 29)
+        );
+    }
+    
+    fond
+    {
+        type wall;
+        faces
+        (
+            (0 5 20 15)
+            (5 10 25 20)
+        );
+    }
+    
+    ymax
+    {
+      type wall;
+        faces
+        (
+            (15 20 21 16)
+            (16 21 22 17)
+            (17 22 23 18)
+            (20 25 26 21)
+            (21 26 27 22)
+            (22 27 28 23)
+            (18 23 24 19)
+            (23 28 29 24)
+        );
+    }
+    
+    ymin
+    {
+      type wall;
+        faces
+        (
+            (0 5 6 1)
+            (1 6 7 2)
+            (2 3 8 7)
+            (5 10 11 6)
+            (6 11 12 7)
+            (7 12 13 8)
+            (3 8 9 4)
+            (8 13 14 9)
+        );
+    }
+
+);
+    
+
+mergePatchPairs
+(
+);
