@@ -37,7 +37,7 @@ zNVaval   0.9;
 zNVamont  1.3;
 zMax     3.0;
 
-cellsize 0.2;
+cellsize 0.4;
 
 nbDirX       #calc "floor((($xMax)-($xMin))/$cellsize)";
 nbDirXAmont  #calc "floor((($xDev)-($xMin))/$cellsize)";

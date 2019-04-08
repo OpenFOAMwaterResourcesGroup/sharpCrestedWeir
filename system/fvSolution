@@ -14,36 +14,22 @@ FoamFile
     object      fvSolution;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 solvers
 {
-    pcorr
+    alpha.water
+    {
+        nAlphaCorr      1;
+        nAlphaSubCycles 2;
+        cAlpha          1;
+    }
+
+    "pcorr.*"
     {
         solver          PCG;
         preconditioner  DIC;
         tolerance       1e-10;
         relTol          0;
-        minIter         1;
     }
-
- "alpha.water.*"
-     {
-     
-         solver      PBiCG;
-	 preconditioner DILU; 	
-	 
-	 
-	 nAlphaCorr      1;
-	 nAlphaSubCycles 1;
-	 cAlpha          1;
-	 icAlpha      0.25;
-	 
-	 MULESCorr     yes;
-	 nLimiterIter    8;
-	 alphaApplyPrevCorr true;
-
-        minIter         1;
-     }
 
     p_rgh
     {
@@ -51,44 +37,35 @@ solvers
         preconditioner  DIC;
         tolerance       1e-07;
         relTol          0.05;
-        minIter         1;
     }
 
     p_rghFinal
     {
         $p_rgh;
-        tolerance       1e-07;
         relTol          0;
-        minIter         1;
     }
 
     "(U|k|epsilon)"
     {
-        solver          PBiCG; 			       
-        preconditioner  DILU; 
-        tolerance       1e-06;
-        relTol          0;
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0.1;
     }
 
     "(U|k|epsilon)Final"
     {
-        solver          PBiCG; 
-        preconditioner  DILU; 
-        tolerance       1e-08;
+        $U;
         relTol          0;
-        minIter         1;
     }
 }
 
 PIMPLE
 {
-    momentumPredictor        yes; //no;
-    nCorrectors              5;   //3;
+    momentumPredictor no;
+    nCorrectors     3;
     nNonOrthogonalCorrectors 0;
 }
-
-
-    
 
 
 // ************************************************************************* //

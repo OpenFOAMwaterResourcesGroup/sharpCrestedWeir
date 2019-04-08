@@ -23,21 +23,21 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         100; //500; //2000; //1000;  
+endTime         10; 
 
-deltaT          0.0001; //0.00001; 
+deltaT          0.0001; 
 
 writeControl    adjustableRunTime;
 
-writeInterval   0.2; //10; 
+writeInterval   1; 
 
-purgeWrite      0; //2; //2; 
+purgeWrite      0; 
 
-writeFormat     binary; //ascii;
+writeFormat     binary; 
 
 writePrecision  12;
 
-writeCompression uncompressed; //compressed;
+writeCompression uncompressed; 
 
 timeFormat      general;
 
@@ -47,78 +47,10 @@ runTimeModifiable yes;
 
 adjustTimeStep  yes;
 
-maxCo           0.5; 
-maxAlphaCo      0.5; 
+maxCo           0.9; 
+maxAlphaCo      0.9; 
 
 maxDeltaT       1;
 
-functions
-{
-    #include "faceSource_plan.cfg"
-    #include "faceSource_planStl.cfg"
-
-    amontBasFlux
-    {
-        type            faceSource;
-        functionObjectLibs ("libfieldFunctionObjects.so");
-        outputControl   timeStep;
-        log             false; //true;
-        // Output field values as well
-        valueOutput     false;
-        source          patch;
-        sourceName      amont_bas;
-        operation       sum;
-
-        fields
-        (
-            rhoPhi    
-        );
-    }
-
-//   amontHautFlux
-//   {
-//      $amontBasFlux;
-//      sourceName      amont_haut;
-//   }
-   
-   avalBasFlux
-   {
-      $amontBasFlux;
-      sourceName      aval_bas;
-   }
-   
-//   avalHautFlux
-//   {
-//      $amontBasFlux;
-//      sourceName      aval_haut;
-//   }
-   
-   probeY2p5 
-   {
-     type probes
-     functionObjectLibs ("libsampling.dylib");
-     fields
-      (
-        p_rgh
-      );
-
-     probeLocations
-      (
-       (1.0 2.5 0.0)
-       (2.0 2.5 0.0)
-       (3.0 2.5 0.0)
-       (4.0 2.5 0.0)
-       (4.75 2.5 0.0)
-       (5.25 2.5 1.0)
-       (6.0 2.5 0.0)
-       (7.0 2.5 0.0)
-       (8.0 2.5 0.0)
-       (9.0 2.5 0.0)
-     );
-     }
-     
-}
-
-libs ( "libgroovyBC.so" ) ;
 
 // ************************************************************************* //
